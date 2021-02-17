@@ -49,6 +49,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
         <footer>
           <Bio />
+            {post.postInterrupter?.interruption?.content && (
+                <div dangerouslySetInnerHTML={{__html: post.postInterrupter.interruption.content}}/>
+            )}
         </footer>
       </article>
 
@@ -99,6 +102,15 @@ export const pageQuery = graphql`
       content
       title
       date(formatString: "MMMM DD, YYYY")
+
+      postInterrupter {
+        interruption {
+          content
+          image {
+            sourceUrl
+          }
+        }
+      }
 
       featuredImage {
         node {
