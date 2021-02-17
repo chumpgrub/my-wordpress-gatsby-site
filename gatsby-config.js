@@ -28,7 +28,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://headlesswp.markfurrow.com/graphql`,
       },
     },
 
@@ -40,6 +40,7 @@ module.exports = {
      */
     {
       resolve: `gatsby-source-filesystem`,
+      concurrent: process.env.GATSBY_CONCURRENT_DOWNLOAD || 200,
       options: {
         name: `assets`,
         path: `${__dirname}/content/assets`,
